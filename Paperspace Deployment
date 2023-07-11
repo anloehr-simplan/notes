@@ -1,0 +1,29 @@
+Paperspace Deployment
+
+# Intro
+It is desirable that the deployment process on paperspace is documented. Especially hurdles and easy steps setting the environment up shall be highlighted.
+
+## Ideas
+• Maybe deploy code via docker containers.
+• Test images locally and deploy to Paperspace instances
+• This might help in that moving from one instance to another is trivial if GPU is ever to be upgraded.
+
+## Infrastructure
+• Docker
+• Docker Hub
+• (Github)
+• Paperspace Gradient
+
+
+To get started enter a title for your note above. When you’re ready to save
+your note just use Vim’s :write or :update commands, a filename will be picked
+automatically based on the title.
+
+                                    * * *
+
+The notes plug-in comes with self hosting documentation. To jump to these notes
+position your cursor on the highlighted name and press ‘gf’ in normal mode:
+
+ • Note taking syntax
+ • Note taking commands
+ •

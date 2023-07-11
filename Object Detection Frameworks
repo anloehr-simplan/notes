@@ -1,0 +1,64 @@
+Object Detection Frameworks
+
+
+# Fundamental Classification
+
+## 1 Stage Detectors
+• Bounding box prediction without region proposal
+
+## 2 Stage Detectors
+
+1. Propose object regions using features learned by deep learning methods (object region proposal)
+2. Object Classification
+
+
+# Problem with current framework
+• Solution not very stable/ thought-through
+• built on top of YOLOv5 by some individual
+• desastrous documentation
+• faulty implementation in some parts of the code
+
+# Criteria for selecting a new framework
+• Well established
+• good documentation (open source)
+• can be trained on a rather small dataset with base performance already acceptable
+• The model should be relatively easy → not too many hyperparameters
+• The model should also perform well on small-sized objects
+
+
+# Modes to improve model performance even with a small amount of data
+• pretraining (unsupervised) on aritifical data (the backbone) (or on real, unlabelled value streams)
+• how to handle class imbalances
+• 
+
+# Approach
+• training an entirely new object detector is illusionary with the amount of data available
+• Transfer learning might be the solution given that we can find a dataset that comes “close” to our data on which model was pretrained
+• Should choose model which is pretrained on dataset which comes closest to our data
+
+# Papers of relvance
+• Automatic detection and classification of symbols in engineering drawings: https://arxiv.org/pdf/2204.13277.pdf
+• Object detection and text recognition in large scale technical drawings: https://pdfs.semanticscholar.org/ab78/08d1f4a47aac8193820f94cbf42f39282c15.pdf
+• Object detection for handwriting localization: https://arxiv.org/abs/2106.14989
+
+
+
+
+State of research 05.05.23
+• Tendency for faster Cnn since well established and pretrained version available
+• Another possibility could be R-FCN
+
+
+
+# Model
+## Faster R CNN
+• State of the art performance, though really slow
+• More accuracy than R CNN 
+   
+
+## R-FCN
+• faster than Faster RCNN
+
+# Concrete schedule for the subsequent weeks
+• Try out different architectures which are pretrained and fine tune results
+• 

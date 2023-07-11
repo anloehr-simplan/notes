@@ -1,0 +1,77 @@
+Package Management Systems (for Python)
+
+
+# Intro
+Python ist besonders reich an externen Bibliotheken, die zur Nutzung in eigenen Projekten bereitgestellt werden.
+Zur Nutzung jener Bibliotheken (/packages) wird ein package manager benutzt.
+
+Im Folgenden werden die verfuegbaren Package Manager analysiert.
+
+# Auswahlkriterien
+Im folgenden sollen einige Merkmale gelistet werden, die einen package manager auszeichnen.
+
+• Verfuegbarkeit von Bibliotheken
+• Dependency resolution capabilities
+• Ease of use
+• Speed
+• Language agnostic?
+• Ease of deployment & integration (docker etc.)
+• 
+
+
+# Package Manager
+Eine Auswahl von Package Managern, die aktuell (Stand 07/23) bei Python Entwicklern Anklang finden sind
+• Conda (Anaconda/ Miniconda)
+• Pip (+Venv)
+• Pipenv
+• Poetry
+
+## Pip (+Venv)
+• Standard dependency/ package manager shipping with the python installation
+• braucht Venv, um die Arbeit an mehreren Projekten zu trennen
+
+## Conda
+Conda erlaubt die Erstellung von environments.
+Ein erheblicher Nachteil ist, dass Conda automatisch recht viele, nicht notwendige dependencies bei Installation eines packages mitinstalliert.
+
+• Conda is a package manager as well as a virtual environment manager. It unifies the functionalities of pip and venv
+• Conda is cross language, supporting pacakage managemetn not only for Python but also for R and some other languages
+• very easy to use (and well documented)
+• can be used in combination with pip (in the conda env, in case a package is not available in conda repos)
+• sometimes some difficulty installing on Windows
+• basic Anaconda installation at approx. 3GB which is quite large. Alternative in miniconda.
+• difficult to build own conda packages (if ever needed)
+
+
+
+## Pipenv
+• claims to have exceptional cross plaform support (also for Windows)
+• Recommended on official python webpage
+• Easy to seperate dev and production environments
+
+## Poetry
+• dep management and packaging tool for python
+• Easy to seperate dev and production environments
+• single file to manage dependencies (.toml file)
+
+
+
+
+Eine offizielle Quelle dafuer ist: https://packaging.python.org/en/latest/guides/tool-recommendations/
+
+## Pip
+Wird stand
+
+
+
+o get started enter a title for your note above. When you’re ready to save
+your note just use Vim’s :write or :update commands, a filename will be picked
+automatically based on the title.
+
+                                    * * *
+
+The notes plug-in comes with self hosting documentation. To jump to these notes
+position your cursor on the highlighted name and press ‘gf’ in normal mode:
+
+ • Note taking syntax
+ • Note taking commands
