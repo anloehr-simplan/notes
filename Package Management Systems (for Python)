@@ -7,6 +7,13 @@ Zur Nutzung jener Bibliotheken (/packages) wird ein package manager benutzt.
 
 Im Folgenden werden die verfuegbaren Package Manager analysiert.
 
+
+# Jobs of these tools
+1. Aufgabe_1: Dependency resolution
+2. Aufgabe_2: Developing and distribution custom built packages
+3. Aufgabe_3: Project isolation
+
+
 # Auswahlkriterien
 Im folgenden sollen einige Merkmale gelistet werden, die einen package manager auszeichnen.
 
@@ -15,8 +22,11 @@ Im folgenden sollen einige Merkmale gelistet werden, die einen package manager a
 • Ease of use
 • Speed
 • Language agnostic?
-• Ease of deployment & integration (docker etc.)
-• 
+• Ease of deployment & integration (docker etc.
+• upgradability and reproducability of env
+
+Ein wichtiger Mechanismus um Reproducability zu generieren sind sog. Lock files.
+Ein solches Lock File spezifiziert die genauen Dependencies fuer *alle* dependencies (auch fuer transitive (‘ungewollt installierte’ deps)
 
 
 # Package Manager
@@ -24,11 +34,19 @@ Eine Auswahl von Package Managern, die aktuell (Stand 07/23) bei Python Entwickl
 • Conda (Anaconda/ Miniconda)
 • Pip (+Venv)
 • Pipenv
+• pyenv
 • Poetry
 
 ## Pip (+Venv)
 • Standard dependency/ package manager shipping with the python installation
 • braucht Venv, um die Arbeit an mehreren Projekten zu trennen
+• Pip loest Aufgabe_1 und Venv loest Aufgabe_2
+• - no difference dev and production packages
+• - no way to specify insatlled versions of nested dependencies
+• - no lock file → inconsistent result using a requirements.txt file
+• - venv unhandlich, jedes mal aktievieren, vergisst man schnell mal
+
+
 
 ## Conda
 Conda erlaubt die Erstellung von environments.
@@ -42,36 +60,31 @@ Ein erheblicher Nachteil ist, dass Conda automatisch recht viele, nicht notwendi
 • basic Anaconda installation at approx. 3GB which is quite large. Alternative in miniconda.
 • difficult to build own conda packages (if ever needed)
 
+A link describing how to achieve reproducability and upgradeability in conda: https://pythonspeed.com/articles/conda-dependency-management/
+
+
+## pyenv
+Pyenv hat dieselbe Aufgabe wie venv allerdigns nur fuer den Python interpreter, der fuer ein spezifisches Projekt genutzt wird
 
 
 ## Pipenv
 • claims to have exceptional cross plaform support (also for Windows)
 • Recommended on official python webpage
 • Easy to seperate dev and production environments
+• has pipfile.lock to ensure that when installing an env, always same package versions are installed, also for nested dependencies
 
 ## Poetry
 • dep management and packaging tool for python
 • Easy to seperate dev and production environments
 • single file to manage dependencies (.toml file)
+• improving on Pipenv
+• The python project added the pyproject.toml file as the central file to manage dependencies
+• 
 
-
-
+# Random Notes
+• some propose using conda with poetry (https://ealizadeh.com/blog/guide-to-python-env-pkg-dependency-using-conda-poetry/)
 
 Eine offizielle Quelle dafuer ist: https://packaging.python.org/en/latest/guides/tool-recommendations/
 
-## Pip
-Wird stand
-
-
-
-o get started enter a title for your note above. When you’re ready to save
-your note just use Vim’s :write or :update commands, a filename will be picked
-automatically based on the title.
 
                                     * * *
-
-The notes plug-in comes with self hosting documentation. To jump to these notes
-position your cursor on the highlighted name and press ‘gf’ in normal mode:
-
- • Note taking syntax
- • Note taking commands
