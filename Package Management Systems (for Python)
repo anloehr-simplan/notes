@@ -82,6 +82,8 @@ Pyenv hat dieselbe Aufgabe wie venv allerdigns nur fuer den Python interpreter, 
 • Recommended on official python webpage
 • Easy to seperate dev and production environments
 • has pipfile.lock to ensure that when installing an env, always same package versions are installed, also for nested dependencies
+• combines power of pip and venv
+
 
 ## Poetry
 • Easy to seperate dev and production environments
@@ -98,6 +100,8 @@ Pyenv hat dieselbe Aufgabe wie venv allerdigns nur fuer den Python interpreter, 
 Eine offizielle Quelle dafuer ist: https://packaging.python.org/en/latest/guides/tool-recommendations/
 
 Achtung: Poetry eignet sich Stand heute (07/23) nicht fuer die Verwaltung von Proketen, die auf Pytorch angewiesen sind. Pytroch unterstuetzt bisher nur Anaconda und pip als dependency/ package managers.
+
+Daher werden wir fuer dieses Projekt PipEnv nutzen.
 
 
                                     * * *
