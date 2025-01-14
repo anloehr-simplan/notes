@@ -8,8 +8,8 @@ echo $(date)
 ln -s /mnt/c/Users/andreas.loehr/Documents/notes/*.org .
 
 
-up_files="$(git ls-files --modified)"
-mod_files="$(git ls-files --others)"
+up_files="$(git ls-files --modified --exclude-standard)"
+mod_files="$(git ls-files --others --exclude-standard)"
 echo "$upfiles $mod_files"
 
 git add "*.org"
