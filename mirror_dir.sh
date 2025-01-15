@@ -5,7 +5,7 @@ find . -type l -delete
 
 echo $(date)
 
-ln -s /mnt/c/Users/andreas.loehr/Documents/notes/*.org .
+ln /mnt/c/Users/andreas.loehr/Documents/notes/*.org .
 
 
 up_files="$(git ls-files --modified --exclude-standard)"
