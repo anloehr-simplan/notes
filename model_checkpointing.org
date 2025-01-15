@@ -1,0 +1,28 @@
+* Model Checkpointing 
+- Checkpointing: rerunning forward-pass segment for each checkpoint segment during backprop
+- issue: non-deterministic stages depending on random number generator(RNG) may / will  change during repeated forward passes --> essentially impossible to use
+- solution: save RNG state and restore during repeated forward passes.
+
+- essentially, checkpointing means trading compute <-> memory  
+
+
+** without checkpointing:
+
+
+*Forward pass*:
+  input --> model --> result 
+             |
+             |
+             v
+        store intermediate
+        results / tensor
+
+*Backward pass*:
+autodiff uses gradients of 'later stages' in computation and intermediate results from forward computation to determine gradient of certain computation 
+
+
+** with checkpointing
+
+intermediate results / tensors are not stored. Gradient computed from back to front, recomputing the required intermediate tensors / results if necessary 
+
+

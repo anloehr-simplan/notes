@@ -1,0 +1,69 @@
+* Notes to paper Improving Text Embeddings with Large Language Models
+:PROPERTIES:
+:LINK: https://arxiv.org/pdf/2401.00368
+:ARXIVE_NUMBER: 2401.00368
+
+- goal: obtain high quality text embeddings
+
+- use only synth data
+
+- no complex training pipelines, leverage proprietary LLMs to generate diverse data for thousand of embeddeding tasks 
+
+- later fine-tune open source Decoder only LLMSs on synth data using standard contrastive los
+
+** Q: What are immediate use cases of text embeddings
+*** Answers
+- information retrieval via nearest neighbor lookup
+- RAG 
+- source attribution of generated text
+
+** Q: How is training of embedding model usually implemented
+*** Answers
+- weakly supervised next token prediction (pretraining)
+- supervised fine-tuning (on high quality labeled datasets)
+
+
+** Q: What are according to the authors at the time of writing, some state of the art models / methods for text embeddeding 
+*** Answers
+Both of the below are small bidirectional encoders 
+- E5
+- BGE:  https://arxiv.org/abs/2309.07597
+
+
+** Q: What are the drawbacks identified by authors with current embedding models
+*** Answer
+- using __relatively old__ BERT style encoders
+- complex pipelines need advanced engineering
+
+
+** Q: Are all current large LLMs pretrained based on contrastive pretraining? 
+*** TODO Answer
+
+* Proposition
+- use proprietary LLMs to
+  1. prompt them for candidate pretraining tasks
+  2. generate data conditioned on the generated candidate pretraining tasks to generate samples
+
+- fine tune powerful open-source LLMs rather than small BERT style models
+  --> already have extensive pretraining
+
+- Synthetic data generation based on existing LLMs
+- categorization of taks into groups -> yield different prompt templates
+*** Subgroups of Synthetic Data used for training 
+**** Asymmetric Tasks
+- query and document semantically related but *not paraphrases of each other*
+***** Short-long match  
+***** Long-Short match  
+***** Long-Long match  
+***** Short-Short match  
+**** Symmetric Tasks
+- query and doc have similar semantic meaning but different surface forms __(whatever this means)__
+
+
+*** Training 
+
+
+
+* Ideas 
+** Cache augmentation of the llm to the encoder
+- is it a viable idea to augment the LLMs encoder cache somehow?
