@@ -3,13 +3,80 @@
 :LINK: https://arxiv.org/pdf/2401.00368
 :ARXIVE_NUMBER: 2401.00368
 
+
+*THIS PAPER --> CURRENTLY USED TEXT EMBEDDING MODEL FOR RAG PIPELINE*
+
+Difference between decoder-only and encoder-decoder LLMs:
+- https://magazine.sebastianraschka.com/p/understanding-encoder-and-decoder
+
+
+** Q: What is the diff between encoder-decoder,  decoder-only and encoder-only LLMs
+*** Answers
+**** Encoder only
+- encode input -> input embedding
+- use masked laugauage modelling to predict a missing token from the encoded context of the model
+- does not leverage previously generated outputs
+- has no designated decoding module, just the encoder module fromthe original transformer
+
+**** Encoder-Decoder
+- encode input -> input embedding
+- process with encoder
+- encdoe target output -> output embedding
+- feed result from endocder + previous results from decoder to decoder -> output for this step
+- different levels of parallelization in training / inference mode see [[Q: What is the key distinction between vanilla transformer training and inference mode?]]
+
+
+**** Decoder-only models
+- do not use encoder of vanilla transformer
+- encode input tokens using output embeddings
+- autoregressively @ each time step, consume the output embeddings and the last steps decoder output 
+
+
+
+
+** Q: What are examples of encoder-decoder models
+*** Answers
+- the vanilla transformer model is an encoder-decoder architecture
+
+** Q: What are examples of decoder-only models
+*** Answers
+- the GPT models
+
+
+** Q: What are examples of encoder-only models
+*** Answers
+- BERT
+- Roberta
+
+
+** Q: What are examples of encoder-decoder hybrids?
+*** Answers
+- BART - https://arxiv.org/abs/1910.13461
+- T5 - https://arxiv.org/abs/1910.10683
+
+
+** TODO Compare BERT to BART 
+
+** Q: What is the key distinction between vanilla transformer training and inference mode?
+*** Answer
+- training uses *teacher forcing*, i.e. the target sequence is known initially and passed to the decoder (as ouput encoding) which allows *parallel training*
+  while during inference the output is not knonw and thus has to proceed autoregressively
+
+
+
+** What are two self-supervised learning objectives to train language models? 
+
+*** Answers 
+- masked language prediction (mask random token, predict from context)
+- next-sentence prediction (predict whether the order of two randomly shuffled senteces corresponds original order (classification task))
+
 - goal: obtain high quality text embeddings
 
 - use only synth data
 
 - no complex training pipelines, leverage proprietary LLMs to generate diverse data for thousand of embeddeding tasks 
 
-- later fine-tune open source Decoder only LLMSs on synth data using standard contrastive los
+- later fine-tune open source Decoder only LLMSs on synth data using standard contrastive loss
 
 ** Q: What are immediate use cases of text embeddings
 *** Answers
@@ -67,3 +134,8 @@ Both of the below are small bidirectional encoders
 * Ideas 
 ** Cache augmentation of the llm to the encoder
 - is it a viable idea to augment the LLMs encoder cache somehow?
+
+* TODO (s)
+- read original BERT paper https://arxiv.org/abs/1810.04805
+- read Roberta paper https://arxiv.org/abs/1907.11692
+
